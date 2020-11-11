@@ -8,7 +8,7 @@ include: "rules/common.smk"
 # Allow users to fix the underlying OS via singularity.
 rule all:
     input:
-        expand("../../data/spades_assemblies/{sample}/scaffolds.fa", sample=samples2["sample"])
+        expand("../data/spades_assemblies/{sample}/scaffolds.fa", sample=samples2["sample"])
         # The first rule should define the default target files
         # Subsequent target rules can be specified below. They should start with all_*.
 
