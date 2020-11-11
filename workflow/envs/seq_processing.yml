@@ -1,0 +1,9 @@
+name: seq_processing
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - fastp=0.20.1=h8b12597_0
+  - biopython=1.78
+
