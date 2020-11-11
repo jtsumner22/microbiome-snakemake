@@ -86,6 +86,7 @@ def write_list(samples_dict_new, path, wildcard_name):
             fi.write("            - {}\n".format(samples_dict_new[key][3]))
 """
 
+
 def write_samples_tsv_merged(sample_ids):
     """makes a samples tsv file with staggered reads"""
     # this is the bullshit line
@@ -106,7 +107,7 @@ def write_samples_tsv(sample_ids, suffix):
     for i in sample_ids:
         samples_ids_changed.append("_".join(i.split("_")[0:2]))
     sample_ids = set(samples_ids_changed)
-    tmp = "../../config/{}samples_2.tsv".format(suffix)
+    tmp = "../../config/{}samples.tsv".format(suffix)
     with open(tmp, "w+") as fi:
         fi.write("sample\n")
         for i in sample_ids:
@@ -119,6 +120,15 @@ def write_units(samples_dict_new):
         for key in samples_dict_new:
             fi.write("{}\t1\t{}\t{}\n".format(key, samples_dict_new[key][0], samples_dict_new[key][1]))
             fi.write("{}\t2\t{}\t{}\n".format(key, samples_dict_new[key][2], samples_dict_new[key][3]))
+
+
+def write_samples_v2_merged(samples_dict_new):
+    with open("../../config/samples2.tsv", "w+") as fi:
+        fi.write("sample\tf_fq1\tf_fq2\ts_fq1\ts_fq2\n")
+        for key in samples_dict_new:
+            fi.write("{}\t{}\t{}\t{}\t{}\n".format(key,
+                                                   samples_dict_new[key][0], samples_dict_new[key][1],
+                                                   samples_dict_new[key][2], samples_dict_new[key][3]))
 
 
 def main():
@@ -143,12 +153,14 @@ def main():
     sample_sequence_ids_2 = get_sample_sequence_ids(samples_lst_2)
     write_samples_tsv(sample_sequence_ids_2, "second_")
 
-
-    #samples_lst_new = samples_lst_1 + samples_lst_2
+    # samples_lst_new = samples_lst_1 + samples_lst_2
     samples_dict_new = merge_dicts(samples_dict_1, samples_dict_2)
-    #write_samples_tsv_merged(samples_lst_new)
+    # write_samples_tsv_merged(samples_lst_new)
     write_units(samples_dict_new)
-    #write_list(samples_dict_new, path_2, wildcard_name_2)
+    # write_list(samples_dict_new, path_2, wildcard_name_2)
+
+    # write samples v2 merged
+    write_samples_v2_merged(samples_dict_new)
 
 
 if __name__ == '__main__':

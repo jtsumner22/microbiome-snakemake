@@ -1,8 +1,8 @@
 
 rule assemble:
     input:
-        r1="../../data/concat_trimmed/{sample}_R1.fastq.gz",
-        r2="../../data/concat_trimmed/{sample}_R2.fastq.gz"
+        r1="data/concat_trimmed/{sample}.r1.fastq.gz",
+        r2="data/concat_trimmed/{sample}.r2.fastq.gz"
     output:
         directory("../../data/spades_assemblies/{sample}")
     shell:
@@ -11,7 +11,6 @@ rule assemble:
         """
 
 
-rule visualize_contigs:
 
 
 #TODO fix unit so that unit column is sequencing id

@@ -5,10 +5,6 @@
 report: "report/workflow.rst"
 
 # Allow users to fix the underlying OS via singularity.
-
-rule all:
-    input:
-        "../results/plots/Contig_Length_Distribution.png"
         # The first rule should define the default target files
         # Subsequent target rules can be specified below. They should start with all_*.
 

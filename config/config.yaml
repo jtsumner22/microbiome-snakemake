@@ -4,5 +4,5 @@
 samples: "../config/samples.tsv"
 first_samples: "../config/first_samples.tsv"
 second_samples: "../config/second_samples.tsv"
-
+samples2: "../config/samples2.tsv"
 
