@@ -4,7 +4,7 @@ rule assemble:
         r1="data/concat_trimmed/{sample}.r1.fastq.gz",
         r2="data/concat_trimmed/{sample}.r2.fastq.gz"
     output:
-        directory("../../data/spades_assemblies/{sample}")
+        "../../data/spades_assemblies/{sample}/scaffolds.fa"
     shell:
         """
         module load spades; spades.py -1 {input.r1} -2 {input.r2} -o {output} -t 40 -m 100 --meta 
@@ -12,7 +12,7 @@ rule assemble:
 
 rule merge_assemblies:
     input:
-        "../../data/spades_assemblies/{sample}/scaffolds.fa"
+        "../data/spades_assemblies/{sample}/scaffolds.fa"
     output:
         "all_scaffolds.fa"
     shell:
