@@ -3,13 +3,16 @@
 
 
 report: "report/workflow.rst"
+include: "rules/common.smk"
 
 # Allow users to fix the underlying OS via singularity.
+rule all:
+    input:
+        directory(expand(("../../data/spades_assemblies/{sample}"), sample=samples2["sample"]))
         # The first rule should define the default target files
         # Subsequent target rules can be specified below. They should start with all_*.
 
 
-include: "rules/common.smk"
 include: "rules/trim.smk"
 include: "rules/merge_reads.smk"
 include: "rules/assemble.smk"

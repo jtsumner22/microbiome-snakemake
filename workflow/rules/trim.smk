@@ -6,17 +6,21 @@ def get_fq_f_r1(wildcards):
 
 def get_fq_f_r2(wildcards):
     print(wildcards.sample)
-    return samples2.loc[wildcards.sample, ["f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()["f_fq2"]
+    return samples2.loc[wildcards.sample, ["f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()#["f_fq2"]
 
 
 def get_fq_s_r1(wildcards):
     print(wildcards.sample)
-    return samples2.loc[wildcards.sample, ["f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()["s_fq1"]
+    return samples2.loc[wildcards.sample, ["f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()#["s_fq1"]
 
 
 def get_fq_s_r2(wildcards):
     print(wildcards.sample)
-    return samples2.loc[wildcards.sample, ["f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()["s_fq2"]
+    return samples2.loc[wildcards.sample, ["f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()#["s_fq2"]
+
+def get_sample(wildcards):
+    print(wildcards.sample)
+    return samples2.loc[wildcards.sample, ["sample", "f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()["sample"]
 
 rule first_fastp:
     input:
