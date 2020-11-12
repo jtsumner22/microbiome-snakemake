@@ -1,5 +1,6 @@
 #! /bin/bash
-#SBATCH -J scheduler
+#SBATCH -A p31288
+#SBATCH --job-name="scheduler"
 #SBATCH -t 40:00:00
 #SBATCH -N 1
 #SBATCH -n 1
