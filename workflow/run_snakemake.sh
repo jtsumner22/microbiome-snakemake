@@ -13,6 +13,7 @@ module load anaconda3
 source activate minimal_ds
 source activate snakemake
 
+# Must be in microbiome-snakemake/workflow/ directory to execute
 cd $SLURM_SUBMIT_DIR
 
 mkdir -p logs_slurm

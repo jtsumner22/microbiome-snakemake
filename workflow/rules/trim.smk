@@ -36,7 +36,7 @@ rule ftp_first:
     input:
         FTP.remote(join(url1, "{file_f}"), keep_local=True)
     output:
-        "../data/reads/{file_f}"
+        temp("../data/reads/{file_f}")
     run:
         shell("mv {input} {output}")
 
@@ -44,7 +44,7 @@ rule ftp_second:
     input:
         FTP.remote(join(url2, "{file_s}"), keep_local=True)
     output:
-        "../data/reads/{file_s}"
+        temp("../data/reads/{file_s}")
     run:
         shell("mv {input} {output}")
 
@@ -56,8 +56,8 @@ rule first_fastp:
         f_r1=get_fq_f_r1,
         f_r2=get_fq_f_r2
     output:
-        tf_r1="../data/trimmed/first/{sample}.f.r1.fastq.gz",
-        tf_r2="../data/trimmed/first/{sample}.f.r2.fastq.gz",
+        tf_r1=temp("../data/trimmed/first/{sample}.f.r1.fastq.gz"),
+        tf_r2=temp("../data/trimmed/first/{sample}.f.r2.fastq.gz"),
         json="../data/trimmed/first/{sample}_fastp.json",
         html="../data/trimmed/first/{sample}_fastp.html"
     conda:
@@ -72,8 +72,8 @@ rule second_fastp:
         s_r1=get_fq_s_r1,
         s_r2=get_fq_s_r2
     output:
-        ts_r1="../data/trimmed/second/{sample}.s.r1.fastq.gz",
-        ts_r2="../data/trimmed/second/{sample}.s.r2.fastq.gz",
+        ts_r1=temp("../data/trimmed/second/{sample}.s.r1.fastq.gz"),
+        ts_r2=temp("../data/trimmed/second/{sample}.s.r2.fastq.gz"),
         json="../data/trimmed/second/{sample}_fastp.json",
         html="../data/trimmed/second/{sample}_fastp.html"
     conda:
