@@ -22,20 +22,27 @@ def get_sample(wildcards):
 rule first_fastp:
     input:
          f_r1=get_fq_f_r1,
-         f_r2=get_fq_f_r2,
+         f_r2=get_fq_f_r2
+    output:
+          tf_r1="../data/trimmed/first/{sample}.f.r1.fastq.gz",
+          tf_r2="../data/trimmed/first/{sample}.f.r2.fastq.gz"
+    conda:
+         "../envs/seq_processing.yml"
+    threads: 16
+    shell:
+         "fastp -i {input.f_r1} -I {input.f_r2} --out1 ${output.tf_r1} --out2 {output.tf_r2} --detect_adapter_for_pe --thread {threads} --length_required 50"
+
+
+rule second_fastp:
+    input:
          s_r1=get_fq_s_r1,
          s_r2=get_fq_s_r2
 
     output:
-          tf_r1="../data/trimmed/first/{sample}.f.r1.fastq.gz",
-          tf_r2="../data/trimmed/first/{sample}.f.r2.fastq.gz",
           ts_r1="../data/trimmed/second/{sample}.s.r1.fastq.gz",
           ts_r2="../data/trimmed/second/{sample}.s.r2.fastq.gz"
     conda:
          "../envs/seq_processing.yml"
     threads: 16
     shell:
-         """
-         fastp -i {input.f_r1} -I {input.f_r2} --out1 ${output.tf_r1} --out2 {output.tf_r2} --detect_adapter_for_pe --thread {threads} --length_required 50
-         fastp -i {input.s_r1} -I {input.s_r2} --out1 ${output.ts_r1} --out2 {output.ts_r2} --detect_adapter_for_pe --thread {threads} --length_required 50
-         """
+         "fastp -i {input.s_r1} -I {input.s_r2} --out1 ${output.ts_r1} --out2 {output.ts_r2} --detect_adapter_for_pe --thread {threads} --length_required 50"
