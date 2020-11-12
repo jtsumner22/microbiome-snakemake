@@ -17,3 +17,16 @@ rule merge_r2_reads:
         r2="../data/concat_trimmed/{sample}.r2.fastq.gz"
     shell:
         "cat {input.tf_r2} {input.ts_r2} > {output.r2}"
+
+# To run fastqc on
+rule fastqc_reads:
+    input:
+        r1="../data/concat_trimmed/{sample}.r1.fastq.gz",
+        r2="../data/concat_trimmed/{sample}.r2.fastq.gz"
+
+    output:
+        "../data/concat_trimmed/{sample}.r1_fastqc.html",
+        "../data/concat_trimmed/{sample}.r2_fastqc.html"
+    threads: 12
+    shell:
+         "fastqc -t {threads} {input} --outdir '../data/concat_trimmed/'"

@@ -6,4 +6,5 @@ channels:
 dependencies:
   - fastp=0.20.1=h8b12597_0
   - biopython=1.78
+  - fastqc=0.11.9
 
