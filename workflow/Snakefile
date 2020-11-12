@@ -8,14 +8,9 @@ include: "rules/common.smk"
 # Allow users to fix the underlying OS via singularity.
 rule all:
     input:
-        expand("../data/reads/{file_f}", file_f=list(itertools.chain.from_iterable(samples2.loc[samples2["sample"], ["f_fq1", "f_fq2"]].values))),
-        expand("../data/reads/{file_s}", file_s=list(itertools.chain.from_iterable(samples2.loc[samples2["sample"], ["s_fq1", "s_fq2"]].values))),
-
+        #expand("../data/reads/{file_f}", file_f=list(itertools.chain.from_iterable(samples2.loc[samples2["sample"], ["f_fq1", "f_fq2"]].values))),
+        #expand("../data/reads/{file_s}", file_s=list(itertools.chain.from_iterable(samples2.loc[samples2["sample"], ["s_fq1", "s_fq2"]].values))),
         expand("../data/spades_assemblies/{sample}/scaffolds.fa", sample=samples2["sample"])
-        #expand("../data/reads/{file}", file=list(samples2["f_fq1"])),
-        #expand("../data/reads/{file}", file=list(samples2["f_fq2"])),
-        #expand("../data/reads/{file}", file=list(samples2["s_fq1"])),
-        #expand("../data/reads/{file}", file=list(samples2["s_fq2"])),
 
         # The first rule should define the default target files
         # Subsequent target rules can be specified below. They should start with all_*.

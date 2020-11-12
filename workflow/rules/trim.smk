@@ -7,23 +7,6 @@ url2 = "ftp.box.com/JackSumner_Data/Second_Batch_of_Reads/"
 def get_fqs(wildcards):
     return samples2.loc[wildcards.sample, ["f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()
 
-# Functions to get remote file path for read sets, returns str
-def get_fq_f_r1_ftp(wildcards):
-    tmp = get_fqs(wildcards)
-    return tmp["f_fq1"]
-
-def get_fq_f_r2_ftp(wildcards):
-    tmp = get_fqs(wildcards)
-    return tmp["f_fq2"]
-
-def get_fq_s_r1_ftp(wildcards):
-    tmp = get_fqs(wildcards)
-    return tmp["s_fq1"]
-
-def get_fq_s_r2_ftp(wildcards):
-    tmp = get_fqs(wildcards)
-    return tmp["s_fq2"]
-
 # Functions to id local read sets, return str
 def get_fq_f_r1(wildcards):
     tmp = get_fqs(wildcards)
@@ -47,7 +30,7 @@ def get_sample(wildcards):
 
 rule ftp_first:
     input:
-        FTP.remote(join(url1, "{file_f}"), keep_local=True),
+        FTP.remote(join(url1, "{file_f}"), keep_local=True)
     output:
         "../data/reads/{file_f}"
     run:
@@ -55,7 +38,7 @@ rule ftp_first:
 
 rule ftp_second:
     input:
-        FTP.remote(join(url2, "{file_s}"), keep_local=True),
+        FTP.remote(join(url2, "{file_s}"), keep_local=True)
     output:
         "../data/reads/{file_s}"
     run:
