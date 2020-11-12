@@ -9,7 +9,7 @@ rule fastqc_trimmed:
         "../data/concat_trimmed/{sample}.r2_fastqc.html"
     threads: 12
     shell:
-         "fastqc -t {threads} {input} --outdir '../data/concat_trimmed/'"
+         "module load fastqc; fastqc -t {threads} {input} --outdir '../data/concat_trimmed/'"
 
 rule multiqc_trimmed:
     input:
@@ -18,4 +18,4 @@ rule multiqc_trimmed:
     output:
         "../data/concat_trimmed/multiqc_report.html"
     shell:
-        "multiqc ../data/concat_trimmed/multiqc_report.html"
+        "module load multiqc; multiqc ../data/concat_trimmed/multiqc_report.html"
