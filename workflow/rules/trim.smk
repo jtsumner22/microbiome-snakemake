@@ -75,38 +75,3 @@ rule second_fastp:
     shell:
         "fastp -i {input.s_r1} -I {input.s_r2} --out1 {output.ts_r1} --out2 {output.ts_r2} --detect_adapter_for_pe --thread {threads} --length_required 50 -j {output.json} -h {output.html} -V"
 
-#rule fastqc_raw_first:
-#    input:
-#        f_r1=get_fq_f_r1,
-#        f_r2=get_fq_f_r2
-#    output:
-#        directory("../data/fastqc/raw/first/")
-#    threads: 12
-#    shell:
-#         "fastqc -t {threads} {input} --outdir {output}"
-
-#rule fastqc_raw_second:
-#    input:
-#        s_r1=get_fq_s_r1,
-#        s_r2=get_fq_s_r2
-#    output:
-#        directory("../data/fastqc/raw/second/")
-#    threads: 12
-#    shell:
-#         "fastqc -t {threads} {input} --outdir {output}"
-
-#rule multiqc_raw_first:
-#    input:
-#        first = "../data/fastqc/raw/first/"
-#    output:
-#          "../data/fastqc/raw/first/multiqc_report.html"
-#    shell:
-#         "multiqc {input}"
-
-#rule multiqc_raw_second:
-#    input:
-#        first = "../data/fastqc/raw/second/"
-#    output:
-#          "../data/fastqc/raw/second/multiqc_report.html"
-#    shell:
-#         "multiqc {input}"

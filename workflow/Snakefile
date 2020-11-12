@@ -11,7 +11,7 @@ rule all:
         #expand("../data/reads/{file_f}", file_f=list(itertools.chain.from_iterable(samples2.loc[samples2["sample"], ["f_fq1", "f_fq2"]].values))),
         #expand("../data/reads/{file_s}", file_s=list(itertools.chain.from_iterable(samples2.loc[samples2["sample"], ["s_fq1", "s_fq2"]].values))),
         expand("../data/spades_assemblies/{sample}/scaffolds.fa", sample=samples2["sample"]),
-        expand("../data/concat_trimmed/{sample}.r1_fastqc.html", sample=samples2["sample"])
+        "../data/concat_trimmed/multiqc_report.html"
 
         # The first rule should define the default target files
         # Subsequent target rules can be specified below. They should start with all_*.

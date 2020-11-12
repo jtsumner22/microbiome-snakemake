@@ -19,7 +19,7 @@ rule merge_r2_reads:
         "cat {input.tf_r2} {input.ts_r2} > {output.r2}"
 
 # To run fastqc on
-rule fastqc_reads:
+rule fastqc_trimmed:
     input:
         r1="../data/concat_trimmed/{sample}.r1.fastq.gz",
         r2="../data/concat_trimmed/{sample}.r2.fastq.gz"
@@ -30,3 +30,12 @@ rule fastqc_reads:
     threads: 12
     shell:
          "fastqc -t {threads} {input} --outdir '../data/concat_trimmed/'"
+
+rule multiqc_trimmed:
+    input:
+        expand("../data/concat_trimmed/{sample}.r1_fastqc.html", sample=samples2["sample"]),
+        expand("../data/concat_trimmed/{sample}.r2_fastqc.html", sample=samples2["sample"])
+    output:
+        "../data/concat_trimmed/multiqc_report.html"
+    shell:
+        "multiqc ../data/concat_trimmed/multiqc_report.html"

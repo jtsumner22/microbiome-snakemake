@@ -11,14 +11,5 @@ rule assemble:
         module load spades; spades.py -1 {input.r1} -2 {input.r2} -o {output} -t {threads} -m 240 --meta 
         """
 
-rule merge_assemblies:
-    input:
-        "../data/spades_assemblies/{sample}/scaffolds.fa"
-    output:
-        "../data/merged_assemblies/all_scaffolds.fa"
-    shell:
-        "cat {input} > {output}"
-
-
 #TODO fix unit so that unit column is sequencing id
 # TODO add quast, spades, fastqc, and multiqc to yaml file
