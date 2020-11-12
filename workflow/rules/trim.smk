@@ -32,7 +32,7 @@ rule first_fastp:
         "../envs/seq_processing.yml"
     threads: 16
     shell:
-        "fastp -i {input.f_r1} -I {input.f_r2} --out1 ${output.tf_r1} --out2 {output.tf_r2} --detect_adapter_for_pe --thread {threads} --length_required 50 -j {output.json} -h {output.html} -V"
+        "fastp -i {input.f_r1} -I {input.f_r2} --out1 {output.tf_r1} --out2 {output.tf_r2} --detect_adapter_for_pe --thread {threads} --length_required 50 -j {output.json} -h {output.html} -V"
 
 
 rule second_fastp:
@@ -42,10 +42,10 @@ rule second_fastp:
     output:
         ts_r1="../data/trimmed/second/{sample}.s.r1.fastq.gz",
         ts_r2="../data/trimmed/second/{sample}.s.r2.fastq.gz",
-        json="../data/trimmed/first/{sample}_fastp.json",
-        html="../data/trimmed/first/{sample}_fastp.html"
+        json="../data/trimmed/second/{sample}_fastp.json",
+        html="../data/trimmed/second/{sample}_fastp.html"
     conda:
         "../envs/seq_processing.yml"
     threads: 16
     shell:
-        "fastp -i {input.s_r1} -I {input.s_r2} --out1 ${output.ts_r1} --out2 {output.ts_r2} --detect_adapter_for_pe --thread {threads} --length_required 50 -j {output.json} -h {output.html} -V"
+        "fastp -i {input.s_r1} -I {input.s_r2} --out1 {output.ts_r1} --out2 {output.ts_r2} --detect_adapter_for_pe --thread {threads} --length_required 50 -j {output.json} -h {output.html} -V"
