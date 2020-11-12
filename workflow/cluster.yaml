@@ -10,5 +10,5 @@ __default__:
 
 assemble:
   partition: "normal"
-  time: 10:00:00
+  time: 04:00:00
   mem: "3g"
