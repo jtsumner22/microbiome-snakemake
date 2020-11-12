@@ -9,18 +9,7 @@ import pandas as pd
 configfile: "../config/config.yaml"
 validate(config, schema="../schemas/config.schema.yaml")
 
-#samples = pd.read_csv(config["samples"], sep="\t").set_index("sample", drop=False)
-#samples.index.names = ["sample"]
-#validate(samples, schema="../schemas/samples.schema.yaml")
 
-#first_samples = pd.read_csv(config["first_samples"], sep="\t").set_index("first_sample", drop=False)
-#first_samples.index.names = ["first_sample_id"]
-#validate(first_samples, schema="../schemas/samples.schema.yaml")
-
-#second_samples = pd.read_csv(config["second_samples"], sep="\t").set_index("second_sample", drop=False)
-#second_samples.index.names = ["second_sample_id"]
-#validate(second_samples, schema="../schemas/samples.schema.yaml")
-
-samples2 = pd.read_csv(config["samples2"], sep="\t").set_index("sample", drop=False)
-samples2.index.names = ["sample"]
+samples = pd.read_csv(config["samples"], sep="\t").set_index("sample", drop=False)
+samples.index.names = ["sample"]
 #validate(samples, schema="../schemas/samples.schema.yaml")

@@ -2,12 +2,11 @@ from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
 from os.path import join
 FTP = FTPRemoteProvider(username="JackSumner2026@u.northwestern.edu", password="Tpisfl22!Quest")
 
-url1 = "ftp.box.com/JackSumner_Data/First_Batch_of_Reads/"
-url2 = "ftp.box.com/JackSumner_Data/Second_Batch_of_Reads/"
-def get_fqs(wildcards):
-    return samples2.loc[wildcards.sample, ["f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()
+#### Functions to id local read sets, return str ####
 
-# Functions to id local read sets, return str
+def get_fqs(wildcards):
+    return samples.loc[wildcards.sample, ["f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()
+
 def get_fq_f_r1(wildcards):
     tmp = get_fqs(wildcards)
     return "../data/reads/" + tmp["f_fq1"]
@@ -25,8 +24,13 @@ def get_fq_s_r2(wildcards):
     return "../data/reads/" + tmp["s_fq2"]
 # Function to get sample id for reads, returns str
 def get_sample(wildcards):
-    return "../data/reads/" + samples2.loc[wildcards.sample, ["sample", "f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()["sample"]
+    return "../data/reads/" + samples.loc[wildcards.sample, ["sample", "f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()["sample"]
 
+
+#### Rules to download files from box for FTP ####
+
+url1 = "ftp.box.com/JackSumner_Data/First_Batch_of_Reads/"
+url2 = "ftp.box.com/JackSumner_Data/Second_Batch_of_Reads/"
 
 rule ftp_first:
     input:
@@ -43,6 +47,9 @@ rule ftp_second:
         "../data/reads/{file_s}"
     run:
         shell("mv {input} {output}")
+
+
+#### Rules to trim first and second round of sequencing data ###
 
 rule first_fastp:
     input:
