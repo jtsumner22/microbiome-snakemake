@@ -33,10 +33,11 @@ rule first_fastp:
           ts_r2="../data/trimmed/second/{sample}.s.r2.fastq.gz"
     conda:
          "../envs/seq_processing.yml"
+    threads: 16
     shell:
          """
          fastp -i {input.f_r1} -I {input.f_r2} --out1 ${output.tf_r1} --out2 {output.tf_r2} \
-         --detect_adapter_for_pe --thread 16 --length_required 50;
+         --detect_adapter_for_pe --thread {threads} --length_required 50;
          fastp -i {input.s_r1} -I {input.s_r2} --out1 ${output.ts_r1} --out2 {output.ts_r2} \
-         --detect_adapter_for_pe --thread 16 --length_required 50
+         --detect_adapter_for_pe --thread {threads} --length_required 50
          """

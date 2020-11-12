@@ -1,0 +1,14 @@
+__default__:
+  allocation: "p31288"
+  partition: "short"
+  cpus: "{threads}"
+  time: 01:00:00
+  mem: "2g"
+  output: "logs_slurm/{rule}.{wildcards}.out"
+  email: "jacksumner2026@u.northwestern.edu"
+  email_type: "FAIL"
+
+assemble:
+  partition: "normal"
+  time: 10:00:00
+  mem: "3g"

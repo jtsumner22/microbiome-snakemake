@@ -5,16 +5,17 @@ rule assemble:
         r2="../data/concat_trimmed/{sample}.r2.fastq.gz"
     output:
         "../data/spades_assemblies/{sample}/scaffolds.fa"
+    threads: 80
     shell:
         """
-        module load spades; spades.py -1 {input.r1} -2 {input.r2} -o {output} -t 40 -m 100 --meta 
+        module load spades; spades.py -1 {input.r1} -2 {input.r2} -o {output} -t {threads} -m 240 --meta 
         """
 
 rule merge_assemblies:
     input:
         "../data/spades_assemblies/{sample}/scaffolds.fa"
     output:
-        "all_scaffolds.fa"
+        "../data/merged_assemblies/all_scaffolds.fa"
     shell:
         "cat {input} > {output}"
 
