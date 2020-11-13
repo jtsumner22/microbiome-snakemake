@@ -4,6 +4,7 @@ import itertools
 
 report: "report/workflow.rst"
 include: "rules/common.smk"
+localrules: ftp_first, ftp_second
 
 # Allow users to fix the underlying OS via singularity.
 rule all:

@@ -4,20 +4,17 @@ __default__:
   cpus: "1"
   time: 01:00:00
   mem: "2g"
+  jobname: "{rule}.{wildcards}"
   output: "logs_slurm/{rule}.{wildcards}.out"
   email: "jacksumner2026@u.northwestern.edu"
   email_type: "FAIL"
-
 assemble:
   partition: "normal"
   time: 04:00:00
   mem: "3g"
-
 first_fastp:
   - cpus: "{threads}"
-
 second_fastp:
   - cpus: "{threads}"
-
 fastqc_trimmed:
   - cpus: "{threads}"
