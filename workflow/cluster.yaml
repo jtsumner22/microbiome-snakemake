@@ -2,20 +2,26 @@ __default__:
   allocation: "p31288"
   partition: "short"
   cpus: "1"
+  nodes: "1"
   time: 01:00:00
-  mem: "2g"
+  mem: "20g"
   jobname: "{rule}_{wildcards}"
   output: "logs_slurm/{rule}_{wildcards}.out"
   error: "logs_slurm/{rule}_{wildcards}.error"
   email: "jacksumner2026@u.northwestern.edu"
   email_type: "FAIL"
+
 assemble:
   partition: "normal"
   time: 04:00:00
-  mem: "3g"
+  mem: "200g"
+
 first_fastp:
-  - cpus: "{threads}"
+  cpus: "{threads}"
+
 second_fastp:
-  - cpus: "{threads}"
+  cpus: "{threads}"
+
 fastqc_trimmed:
-  - cpus: "{threads}"
+  cpus: "{threads}"
+

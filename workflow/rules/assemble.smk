@@ -6,7 +6,7 @@ rule assemble:
         r2="../data/concat_trimmed/{sample}.r2.fastq.gz"
     output:
         "../data/spades_assemblies/{sample}/scaffolds.fa"
-    threads: 80
+    threads: 40
     shell:
         "module load spades; spades.py -1 {input.r1} -2 {input.r2} -o {output} -t {threads} -m 240 --meta"
 
