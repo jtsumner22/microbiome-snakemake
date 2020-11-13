@@ -36,16 +36,16 @@ rule ftp_first:
         FTP.remote(join(url1, "{file_f}"), keep_local=True)
     output:
         temp("../data/reads/{file_f}")
-    run:
-        shell("mv {input} {output}")
+    shell:
+        "mv {input} {output}"
 
 rule ftp_second:
     input:
         FTP.remote(join(url2, "{file_s}"), keep_local=True)
     output:
         temp("../data/reads/{file_s}")
-    run:
-        shell("mv {input} {output}")
+    shell:
+        "mv {input} {output}"
 
 
 #### Rules to trim first and second round of sequencing data ###
