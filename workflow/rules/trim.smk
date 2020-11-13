@@ -33,7 +33,7 @@ def get_sample(wildcards):
 
 rule ftp_first:
     input:
-        FTP.remote(join(url1, "{file_f}"))
+        FTP.remote(join(url1, "{file_f}"), keep_local=True)
     output:
         temp("../data/reads/{file_f}")
     run:
@@ -41,7 +41,7 @@ rule ftp_first:
 
 rule ftp_second:
     input:
-        FTP.remote(join(url2, "{file_s}"))
+        FTP.remote(join(url2, "{file_s}"), keep_local=True)
     output:
         temp("../data/reads/{file_s}")
     run:
