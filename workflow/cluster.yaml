@@ -14,7 +14,7 @@ __default__:
 assemble:
   partition: "normal"
   time: 04:00:00
-  mem: "200g"
+  mem: "100g"
 
 first_fastp:
   cpus: "{threads}"
