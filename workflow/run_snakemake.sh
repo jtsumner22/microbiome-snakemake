@@ -17,7 +17,7 @@ source activate snakemake
 cd $SLURM_SUBMIT_DIR
 
 mkdir -p logs_slurm
-snakemake --verbose --use-conda --cluster-config cluster.yaml --cluster 'sbatch -A {cluster.allocation} -p {cluster.partition} -t {cluster.time} --mem-per-cpu={cluster.mem} -n {cluster.cpus} -o {cluster.output} -e {cluster.output}' -j 10
+snakemake --verbose --use-conda --cluster-config cluster.yaml --cluster 'sbatch -A {cluster.allocation} -p {cluster.partition} -t {cluster.time} --mem-per-cpu={cluster.mem} -n {cluster.cpus} -o {cluster.output} -e {cluster.output} --mail-type {cluster.email_type} --mail-user {cluster.email}' -j 10
 
 source deactivate
 source deactivate
