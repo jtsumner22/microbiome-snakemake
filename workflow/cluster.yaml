@@ -20,7 +20,7 @@ assemble:
   cpus: "{threads}"
   partition: "normal"
   time: 04:00:00
-  mem: "240g"
+  mem: "100g"
 
 first_fastp:
   cpus: "{threads}"
