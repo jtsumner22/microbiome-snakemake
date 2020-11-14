@@ -17,9 +17,10 @@ multiqc_trimmed:
   error: "logs_slurm/multiqc_trimmed.err"
 
 assemble:
+  cpus: "{threads}"
   partition: "normal"
   time: 04:00:00
-  mem: "100g"
+  mem: "240g"
 
 first_fastp:
   cpus: "{threads}"
