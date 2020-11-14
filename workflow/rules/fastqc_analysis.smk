@@ -18,4 +18,4 @@ rule multiqc_trimmed:
     output:
         "../data/concat_trimmed/multiqc_report.html"
     shell:
-        "module load multiqc; multiqc ../data/concat_trimmed/multiqc_report.html"
+        "module load multiqc; multiqc ../data/concat_trimmed/"
