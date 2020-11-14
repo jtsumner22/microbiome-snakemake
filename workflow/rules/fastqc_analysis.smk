@@ -1,4 +1,5 @@
 # To run fastqc on trimmed, concat reads
+
 rule fastqc_trimmed:
     input:
         r1="../data/concat_trimmed/{sample}.r1.fastq.gz",
@@ -16,6 +17,6 @@ rule multiqc_trimmed:
         expand("../data/concat_trimmed/{sample}.r1_fastqc.html", sample=samples["sample"]),
         expand("../data/concat_trimmed/{sample}.r2_fastqc.html", sample=samples["sample"])
     output:
-        "../data/concat_trimmed/multiqc_report.html"
+        "multiqc_report.html"
     shell:
         "module load multiqc; multiqc ../data/concat_trimmed/"
