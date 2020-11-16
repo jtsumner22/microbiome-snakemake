@@ -11,7 +11,7 @@ rule all:
     input:
         #expand("../data/reads/{file_f}", file_f=list(itertools.chain.from_iterable(samples2.loc[samples2["sample"], ["f_fq1", "f_fq2"]].values))),
         #expand("../data/reads/{file_s}", file_s=list(itertools.chain.from_iterable(samples2.loc[samples2["sample"], ["s_fq1", "s_fq2"]].values))),
-        expand("../data/spades_assemblies/{sample}/scaffolds.fa", sample=samples["sample"]),
+        expand("../data/spades_assemblies/{sample}/scaffolds.fasta", sample=samples["sample"]),
         "multiqc_report.html"
 
         # The first rule should define the default target files
