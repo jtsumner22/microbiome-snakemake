@@ -30,3 +30,7 @@ second_fastp:
 fastqc_trimmed:
   cpus: "{threads}"
 
+vibrant_parsed:
+  cpus: "{threads}"
+  time: 03:00:00
+  mem: "40gb"
