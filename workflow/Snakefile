@@ -9,9 +9,9 @@ localrules: ftp_first, ftp_second, multiqc_trimmed
 # Allow users to fix the underlying OS via singularity.
 rule all:
     input:
-        expand("../data/spades_assemblies/{sample}/scaffolds.fasta", sample=samples["sample"]),
+        #expand("../data/spades_assemblies/{sample}/scaffolds.fasta", sample=samples["sample"]),
         "multiqc_report.html",
-        expand("../data/parsed_assemblies/{sample}_greater1kb_scaffolds.fasta", sample=samples["sample"]),
+        #expand("../data/parsed_assemblies/{sample}_greater1kb_scaffolds.fasta", sample=samples["sample"]),
         expand("../data/quast/raw_scaffolds/results_{sample}/report.html", sample=samples["sample"]),
         expand("../data/quast/parsed_scaffolds/results_{sample}/report.html", sample=samples["sample"])
 
