@@ -1,8 +1,3 @@
-from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
-from os.path import join
-FTP = FTPRemoteProvider(username="JackSumner2026@u.northwestern.edu", password="Tpisfl22!Quest", port=21)
-url1 = "ftp.box.com/JackSumner_Data/First_Batch_of_Reads/"
-url2 = "ftp.box.com/JackSumner_Data/Second_Batch_of_Reads/"
 
 #### Functions to id local read sets, return str ####
 
@@ -27,25 +22,6 @@ def get_fq_s_r2(wildcards):
 # Function to get sample id for reads, returns str
 def get_sample(wildcards):
     return "../data/reads/" + samples.loc[wildcards.sample, ["sample", "f_fq1", "f_fq2", "s_fq1", "s_fq2"]].dropna()["sample"]
-
-
-#### Rules to download files from box for FTP ####
-
-rule ftp_first:
-    input:
-        FTP.remote(join(url1, "{file_f}"), immediate_close=True)
-    output:
-        temp("../data/reads/{file_f}")
-    shell:
-        "mv {input} {output}"
-
-rule ftp_second:
-    input:
-        FTP.remote(join(url2, "{file_s}"), immediate_close=True)
-    output:
-        temp("../data/reads/{file_s}")
-    shell:
-        "mv {input} {output}"
 
 
 #### Rules to trim first and second round of sequencing data ###

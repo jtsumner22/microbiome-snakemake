@@ -4,7 +4,7 @@ import itertools
 
 report: "report/workflow.rst"
 include: "rules/common.smk"
-localrules: ftp_first, ftp_second, multiqc_trimmed
+#localrules: ftp_first, ftp_second, multiqc_trimmed
 
 # Allow users to fix the underlying OS via singularity.
 rule all:
@@ -12,13 +12,16 @@ rule all:
         #expand("../data/reads/{file_f}", file_f=list(itertools.chain.from_iterable(samples2.loc[samples2["sample"], ["f_fq1", "f_fq2"]].values))),
         #expand("../data/reads/{file_s}", file_s=list(itertools.chain.from_iterable(samples2.loc[samples2["sample"], ["s_fq1", "s_fq2"]].values))),
         expand("../data/spades_assemblies/{sample}/scaffolds.fasta", sample=samples["sample"]),
-        "multiqc_report.html"
+        #"multiqc_report.html",
+        expand("../data/parsed_assemblies/{sample}_greater1kb_scaffolds.fasta", sample=samples["sample"])
 
         # The first rule should define the default target files
         # Subsequent target rules can be specified below. They should start with all_*.
-
+# TODO: remove include # x2, local rules #, and multiqc comment
+#include: "rules/download_reads.smk"
 include: "rules/trim.smk"
 include: "rules/concat_reads.smk"
 include: "rules/assemble.smk"
 include: "rules/other.smk"
-include: "rules/fastqc_analysis.smk"
+#include: "rules/fastqc_analysis.smk"
+include: "rules/assembly_qc.smk"
