@@ -39,4 +39,4 @@ vcontact_parsed:
   cpus: "{threads}"
   time: 05:00:00
   partition: "normal"
-  mem: "150g"
+  mem: "100g"
