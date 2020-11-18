@@ -4,7 +4,7 @@ import itertools
 
 report: "report/workflow.rst"
 include: "rules/common.smk"
-localrules: ftp_first, ftp_second, multiqc_trimmed
+localrules: ftp_first, ftp_second, multiqc_trimmed, concat_vibrant_phageAA
 
 # Allow users to fix the underlying OS via singularity.
 rule all:
@@ -14,7 +14,7 @@ rule all:
         #expand("../data/parsed_assemblies/{sample}_greater1kb_scaffolds.fasta", sample=samples["sample"]),
         expand("../data/quast/raw_scaffolds/results_{sample}/report.html", sample=samples["sample"]),
         expand("../data/quast/parsed_scaffolds/results_{sample}/report.html", sample=samples["sample"]),
-        expand("../data/vibrant_output/VIBRANT_{sample}_greater1kb_scaffolds/VIBRANT_phages_{sample}_greater1kb_scaffolds/{sample}_greater1kb_scaffolds.phages_combined.faa", sample=samples["sample"]),
+        #expand("../data/vibrant_output/VIBRANT_{sample}_greater1kb_scaffolds/VIBRANT_phages_{sample}_greater1kb_scaffolds/{sample}_greater1kb_scaffolds.phages_combined.faa", sample=samples["sample"]),
         "../data/vcontact2_data/g2g_concat_phages_combined.simple.csv"
 
         # The first rule should define the default target files

@@ -22,7 +22,7 @@ rule concat_vibrant_phageAA:
     input:
         files = vcontact_inputs
     output:
-        "../data/vcontact2_data/concat_phages_combined.faa"
+        temp("../data/vcontact2_data/concat_phages_combined.faa")
     shell:
         "cat {input.files} > {output}"
 
