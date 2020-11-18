@@ -45,7 +45,7 @@ rule generate_gene2genome:
     conda:
         "../envs/vcontact2.yml"
     shell:
-        "vcontact_gene2genome -p {input} -o {output}"
+        "vcontact2_gene2genome -p {input} -o {output}"
 
 
 #### Prepare GFF files from VIBRANT ####
