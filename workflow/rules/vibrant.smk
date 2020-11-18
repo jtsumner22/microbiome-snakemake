@@ -54,7 +54,7 @@ rule vcontact_parsed:
     output:
         v_direc = directory("../data/vcontact2_data/vcontact2_output"),
         genome_by_genome = "../data/vcontact2_data/vcontact2_output/genome_by_genome_overview.csv"
-    threads: 80
+    threads: 100
     conda:
         "../envs/vcontact2.yml"
     shell:

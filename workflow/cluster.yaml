@@ -36,7 +36,8 @@ vibrant_parsed:
   mem: "40gb"
 
 vcontact_parsed:
+  nodes: "4"
   cpus: "{threads}"
   time: 05:00:00
   partition: "normal"
-  mem: "100g"
+  mem: "50g"
