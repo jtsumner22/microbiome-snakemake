@@ -8,7 +8,7 @@ rule vibrant_parsed :
     input:
         "../data/parsed_assemblies/{sample}_greater1kb_scaffolds.fasta"
     output:
-        direc="../data/vibrant_output/VIBRANT_{sample}_greater1kb_scaffolds",
+        direc=directory("../data/vibrant_output/VIBRANT_{sample}_greater1kb_scaffolds"),
         phages="../data/vibrant_output/VIBRANT_{sample}_greater1kb_scaffolds/VIBRANT_phages_{sample}_greater1kb_scaffolds/{sample}_greater1kb_scaffolds.phages_combined.faa"
     threads: 20
     conda:
