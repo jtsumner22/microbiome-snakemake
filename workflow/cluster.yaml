@@ -32,7 +32,7 @@ fastqc_trimmed:
 
 vibrant_parsed:
   cpus: "{threads}"
-  time: 03:00:00
+  time: 04:00:00
   mem: "100g"
 
 vcontact_parsed:
