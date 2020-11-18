@@ -10,7 +10,7 @@ rule vibrant_parsed :
     output:
         direc=directory("../data/vibrant_output/VIBRANT_{sample}_greater1kb_scaffolds"),
         phages="../data/vibrant_output/VIBRANT_{sample}_greater1kb_scaffolds/VIBRANT_phages_{sample}_greater1kb_scaffolds/{sample}_greater1kb_scaffolds.phages_combined.faa"
-    threads: 40
+    threads: 20
     conda:
         "../envs/vibrant.yml"
     shell:
