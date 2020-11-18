@@ -34,3 +34,9 @@ vibrant_parsed:
   cpus: "{threads}"
   time: 03:00:00
   mem: "40gb"
+
+vcontact_parsed:
+  cpus: "{threads}"
+  time: 05:00:00
+  partition: "normal"
+  mem: "200gb"
