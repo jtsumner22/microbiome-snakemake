@@ -1,6 +1,6 @@
 from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
 from os.path import join
-FTP = FTPRemoteProvider(username="JackSumner2026@u.northwestern.edu", password="Tpisfl22!Quest", port=21)
+FTP = FTPRemoteProvider(username="email", password="pswd", port=21)
 url1 = "ftp.box.com/JackSumner_Data/First_Batch_of_Reads/"
 url2 = "ftp.box.com/JackSumner_Data/Second_Batch_of_Reads/"
 
